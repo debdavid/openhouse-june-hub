@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Step 2 — Demo &amp; Build Guide | UiLab Open House June 2026</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="grad-bar"></div>
+<nav>
+  <a href="index.html" class="nav-brand">UiLab <span>Open House</span> · June 2026</a>
+  <div class="nav-links">
+    <a href="index.html">1 · System Instruction</a>
+    <a href="demo.html" class="active">2 · Demo &amp; Build Guide</a>
+    <a href="tips.html">3 · Tips, Prompts &amp; Scaling</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Step 2 of 3 · Watch then build</div>
+    <h1>Demo video and<br><span>step-by-step</span> build guide.</h1>
+    <p>Watch the demo first — then follow the written guide to build your own M365 declarative agent. Have your system instruction from Step 1 ready to paste.</p>
+  </div>
+  <div class="hero-lime"></div>
+</div>
+
+<div class="container">
+
+  <!-- VIDEO -->
+  <section>
+    <div class="eyebrow">Watch first</div>
+    <h2>Demo — building an M365 declarative agent.</h2>
+    <p class="lead">This demo shows the full build process using a BAS and accounting firm presentation agent as the example. Watch it end to end before starting your own build.</p>
+    <div class="video-placeholder">
+      <div class="play-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><polygon points="8,5 20,12 8,19" fill="white"/></svg>
+      </div>
+      <p>Demo video — link to be added here</p>
+      <p style="font-size:12px;opacity:0.5;">How to build a Microsoft 365 declarative agent · 8–12 minutes</p>
+    </div>
+    <div class="info-box">
+      <p><strong>What the demo covers:</strong> generating a system instruction using AI · opening M365 Copilot and finding the agent builder · configuring the agent with name, instruction, and connected files · adding starter prompts · testing with a real brief · comparing output to a blank Copilot session · sharing with a team.</p>
+    </div>
+  </section>
+
+  <!-- WRITTEN BUILD GUIDE -->
+  <section>
+    <div class="eyebrow">Written guide — follow along</div>
+    <h2>Build your agent — eight steps.</h2>
+    <p class="lead">Follow these steps in order. Have your system instruction from Step 1 ready before you start.</p>
+
+    <div class="step-row">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Use AI to generate your system instruction</h3>
+        <p>If you have not already done this, go back to <a href="index.html" style="color:var(--water);font-weight:600;">Step 1</a> and run the prompt in Claude, ChatGPT, or M365 Copilot. Answer the eight questions. Copy the full instruction the AI generates and save it to a Word document or notes app. Do not summarise it — copy it in full.</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Open Microsoft 365 Copilot</h3>
+        <p>Go to <strong>microsoft365.com</strong> and sign in with your Microsoft account. Alternatively open <strong>Microsoft Teams</strong> and look for Copilot in the left sidebar. Navigate to the Copilot section — look for the agent or assistant builder. If you cannot find it, use the search bar inside M365 and type <em>"agent builder."</em></p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Create a new agent</h3>
+        <p>Click <strong>Create a new agent</strong> or <strong>New agent</strong>. You will see a configuration screen with fields for name, description, and instructions. Fill in the <strong>Name</strong> — be specific, for example: <em>Quarterly Report Presentation Builder — Clarity Accounting</em>. Add a one-sentence <strong>Description</strong> — what the agent does and who it serves.</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Paste your system instruction</h3>
+        <p>Paste your full system instruction from Step 1 into the <strong>Instructions</strong> field. Do not truncate or summarise it. The character count will be high — that is intentional. Detail is what makes this agent significantly more useful than a blank Copilot session. Review it once after pasting to confirm it pasted correctly.</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h3>Connect your knowledge files</h3>
+        <p>Navigate to the <strong>Knowledge</strong> section and upload any relevant documents. These become the agent's reference library — it draws on them when generating presentation content. Useful files to upload include: report templates, policy documents, curriculum standards, product catalogues, financial summaries, brand guidelines, or any document your presentations typically reference. The more relevant the files, the more accurate and specific the output.</p>
+        <div class="info-box" style="margin-top:12px;">
+          <p><strong>File types that work:</strong> Word documents (.docx), PDFs, Excel spreadsheets (.xlsx), and plain text files. Keep each file under 50MB. Use clear, descriptive file names so the agent can reference them accurately.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-num">6</div>
+      <div class="step-content">
+        <h3>Add starter prompts</h3>
+        <p>Find the <strong>Starter prompts</strong> or <strong>Conversation starters</strong> field and add three to five meaningful prompts. These appear as clickable suggestions when someone opens the agent. Make them specific and immediately useful. Examples for a financial reporting agent:</p>
+        <ul style="margin-top:10px;list-style:none;">
+          <li style="padding:4px 0 4px 18px;position:relative;font-size:14px;color:var(--mid);"><span style="position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--burg);display:block;"></span><em>"Create a quarterly financial report presentation for Q3 FY2025 — revenue $487K, expenses $299K, ATO GST due 28 April."</em></li>
+          <li style="padding:4px 0 4px 18px;position:relative;font-size:14px;color:var(--mid);"><span style="position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--burg);display:block;"></span><em>"Draft a year-end financial summary presentation for a small business client — non-financial audience."</em></li>
+          <li style="padding:4px 0 4px 18px;position:relative;font-size:14px;color:var(--mid);"><span style="position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--burg);display:block;"></span><em>"Create a cash flow update presentation — business has $143K in bank, $67K outstanding debtors, payment due next month."</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-num">7</div>
+      <div class="step-content">
+        <h3>Test with a real brief</h3>
+        <p>Use the test panel or start a conversation with your agent. Give it a real presentation brief from your work context. Evaluate the output against three questions:</p>
+        <ul style="margin-top:8px;list-style:none;">
+          <li style="padding:3px 0 3px 18px;position:relative;font-size:14px;color:var(--mid);"><span style="position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--water);display:block;"></span>Does the output reflect your professional context — or does it sound generic?</li>
+          <li style="padding:3px 0 3px 18px;position:relative;font-size:14px;color:var(--mid);"><span style="position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--water);display:block;"></span>Does every slide title state the message as a complete sentence?</li>
+          <li style="padding:3px 0 3px 18px;position:relative;font-size:14px;color:var(--mid);"><span style="position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--water);display:block;"></span>Is the tone and language appropriate for your stated audience?</li>
+        </ul>
+        <p style="margin-top:10px;font-size:14px;color:var(--mid);">If any answer is no — note what needs adjusting and refine your system instruction before deploying. Minor refinements are normal and expected on the first test.</p>
+      </div>
+    </div>
+
+    <div class="step-row">
+      <div class="step-num">8</div>
+      <div class="step-content">
+        <h3>Deploy to your team</h3>
+        <p>Once you are satisfied with the output, share the agent with colleagues through the sharing or publishing settings in M365. In a Microsoft 365 tenant, you can publish the agent so it appears in Microsoft Teams for everyone in your organisation with access. <strong>One person builds it. Everyone benefits.</strong> Update the system instruction once — every team member gets the improvement immediately.</p>
+      </div>
+    </div>
+
+    <div class="hl">
+      <p><strong>Save your system instruction.</strong> Copy it to a Word document and name it: <em>M365 Agent Instruction — [Your Organisation] — June 2026</em>. When you open a new session or need to reconfigure the agent, you have it ready to paste immediately.</p>
+    </div>
+  </section>
+
+  <!-- NEXT STEP -->
+  <section>
+    <div class="eyebrow">Next step</div>
+    <h2>Agent built — head to Step 3 for tips, prompts, and scaling ideas.</h2>
+    <div class="hl">
+      <p><strong>Ready?</strong> Go to <a href="tips.html" style="color:var(--lime);font-weight:700;">Step 3 — Tips, Prompts &amp; Scaling →</a></p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>UiLab Open House · June 2026 · Facilitated by Deborrah David · Data &amp; AI Advisor</p>
+  <a href="https://uilab.com.au" target="_blank">uilab.com.au</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Step 1 — Write Your System Instruction | UiLab Open House June 2026</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="grad-bar"></div>
+<nav>
+  <a href="index.html" class="nav-brand">UiLab <span>Open House</span> · June 2026</a>
+  <div class="nav-links">
+    <a href="index.html" class="active">1 · System Instruction</a>
+    <a href="demo.html">2 · Demo &amp; Build Guide</a>
+    <a href="tips.html">3 · Tips, Prompts &amp; Scaling</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Step 1 of 3 · Before you open M365 Copilot</div>
+    <h1>Write your system instruction<br>using <span>AI</span>.</h1>
+    <p>Before you build your M365 declarative agent, you need a robust system instruction. Use Claude, ChatGPT, or M365 Copilot to generate one — specific to your professional context. This page gives you everything you need to do that.</p>
+  </div>
+  <div class="hero-lime"></div>
+</div>
+
+<div class="container">
+
+  <!-- WHY USE AI TO WRITE IT -->
+  <section>
+    <div class="eyebrow">Why this approach</div>
+    <h2>Don't write your system instruction from scratch.</h2>
+    <p class="lead">A good system instruction requires the same rigour as a well-written professional brief — specific, unambiguous, and written as if the agent knows nothing about you. AI will push you to be more specific than you would naturally be on your own.</p>
+    <div class="g3">
+      <div class="card c-burg">
+        <h3>The quality problem</h3>
+        <p>Most people write vague instructions — "help me create professional presentations" — and wonder why the agent produces generic output. The instruction is the product. Vague in, generic out.</p>
+      </div>
+      <div class="card c-water">
+        <h3>The AI advantage</h3>
+        <p>When you answer eight specific questions, the AI constructs a 4,000 to 8,000 word instruction that incorporates professional communication frameworks, audience calibration, and non-negotiables you would not think to include yourself.</p>
+      </div>
+      <div class="card c-land">
+        <h3>The result</h3>
+        <p>An agent that could not be mistaken for one built for a different professional. Every brief you give it produces structured, purposeful output — calibrated to your context, your audience, your voice.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE THREE FRAMEWORKS -->
+  <section>
+    <div class="eyebrow">Built into your instruction</div>
+    <h2>Three frameworks that make every presentation better.</h2>
+    <p class="lead">The system instruction generator builds these three frameworks into your agent automatically. You do not need to understand them in detail — your agent will apply them every time it helps you create a presentation.</p>
+    <div class="col">
+      <div class="card c-jac">
+        <div class="badge b-jac">Framework 1</div>
+        <h3>ARC — Aim, Route, Checkpoints</h3>
+        <p>Your agent always establishes the <strong>Aim</strong> — the exact outcome the audience must reach — before generating any content. It maps the <strong>Route</strong> — the narrative path from opening to close. Then it defines 3 to 5 <strong>Checkpoints</strong> — success criteria that confirm the presentation achieved its aim for this specific audience. All three are confirmed with you before any slide content is written.</p>
+      </div>
+      <div class="card c-sum">
+        <div class="badge b-sum">Framework 2</div>
+        <h3>OEMGPC — Orient, Explain, Model, Guide, Pre-empt, Commit</h3>
+        <p>Every slide earns its place and moves the audience forward. <strong>Orient</strong> — frame the context. <strong>Explain</strong> — deliver the core argument. <strong>Model</strong> — show the evidence or worked example. <strong>Guide</strong> — name what this means for this audience specifically. <strong>Pre-empt</strong> — address the objection they are thinking. <strong>Commit</strong> — close with the ask and next step. Your agent checks every slide against this sequence before finalising.</p>
+      </div>
+      <div class="card c-water">
+        <div class="badge b-water">Framework 3</div>
+        <h3>P-PASS — Purpose, Persuasion, Audience, Safety, Standards</h3>
+        <p>Before delivering any output, your agent applies this quality filter. Does every slide serve the stated <strong>Purpose</strong>? Does the structure earn the <strong>Persuasion</strong>? Is the language right for this <strong>Audience</strong>? Are there any <strong>Safety</strong> risks — unverified claims or reputational exposure? Do all slides meet the <strong>Standards</strong> — consistent headlines, appropriate length, correct format?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PROMPT -->
+  <section>
+    <div class="eyebrow">The prompt — copy and paste this</div>
+    <h2>Paste this into Claude, ChatGPT, or M365 Copilot.</h2>
+    <p class="lead">Answer the eight questions honestly and specifically. The more detail you provide, the better the instruction your agent receives.</p>
+
+    <div class="info-box">
+      <p><strong>How it works:</strong> The AI will ask you one question at a time and wait for your answer before moving to the next. At the end, it generates a complete 4,000 to 8,000 word system instruction ready to paste directly into your M365 agent.</p>
+    </div>
+
+    <div class="prompt-box">
+      <div class="prompt-label">Copy this entire prompt — paste into Claude, ChatGPT, or M365 Copilot</div>
+      <div class="prompt-body">I am building a Microsoft 365 declarative agent that
+will help me create professional presentations. Before
+you write the system instruction, I need you to
+understand my professional context. Please ask me the
+following questions one at a time, wait for my answer,
+and confirm my response before moving to the next
+question. Do not skip any question or combine them.
+
+<span class="pk">QUESTION 1</span>
+What is your professional role, and what organisation
+or business do you work for? Include your industry or
+sector, the size of your organisation, and where you
+are based if relevant.
+
+<span class="pk">QUESTION 2</span>
+Who is the primary audience for the presentations this
+agent will help you create? Describe who is in the
+room — their professional background, their level of
+familiarity with your subject matter, and what they
+need to walk away knowing or deciding.
+
+<span class="pk">QUESTION 3</span>
+What type of presentations will this agent help you
+create most often? For example: client reports, board
+updates, funding proposals, team briefings, community
+presentations, training materials, or something else.
+Be as specific as possible.
+
+<span class="pk">QUESTION 4</span>
+What tone and communication style best represents your
+professional voice? Choose from: highly formal and
+technical, professionally formal, professional and
+accessible, warm and conversational — or describe
+your own.
+
+<span class="pk">QUESTION 5</span>
+What are the 2 to 3 key messages, values, or priorities
+that your presentations should always reflect —
+regardless of the topic? These might be your
+organisation's mission, your professional standards,
+or the outcomes you always want your audience to
+leave with.
+
+<span class="pk">QUESTION 6</span>
+What documents, templates, or knowledge sources will
+you connect to this agent? List any files you plan to
+upload — for example financial reports, policy
+documents, curriculum standards, product catalogues,
+or brand guidelines. If none, say none.
+
+<span class="pk">QUESTION 7</span>
+What should this agent never do? Include any language,
+structure, content, or behaviour that would be
+unprofessional, inaccurate, or inappropriate for your
+context.
+
+<span class="pk">QUESTION 8</span>
+What format and structural constraints apply to your
+presentations? Include slide count limits, required
+sections, branding requirements, or any other fixed
+parameters your presentations must meet.
+
+---
+
+Once you have all eight answers, write a complete,
+detailed system instruction for my Microsoft 365
+declarative agent. The instruction must:
+
+Be between 4,000 and 8,000 words — specific enough
+that this agent could not be mistaken for one built
+for a different professional.
+
+Incorporate the following three presentation
+frameworks as governing principles the agent applies
+to every presentation it helps create:
+
+<span class="pk">ARC (Aim, Route, Checkpoints)</span>
+Always establish the Aim before generating any content.
+Map the Route — the narrative path from opening to
+close. Define 3 to 5 Checkpoints — success criteria
+for this specific audience. Confirm all three with the
+user before writing any slide content.
+
+<span class="pk">OEMGPC (Orient, Explain, Model, Guide, Pre-empt, Commit)</span>
+Every slide must earn its place. Orient — frame the
+context. Explain — deliver the core argument. Model —
+show evidence or a worked example. Guide — name what
+this means for this audience. Pre-empt — address the
+objection they are thinking. Commit — close with the
+ask and next step. Check every slide against this
+sequence before finalising.
+
+<span class="pk">P-PASS (Purpose, Persuasion, Audience, Safety, Standards)</span>
+Apply this quality filter before delivering any output.
+Purpose — does every slide serve the stated aim?
+Persuasion — does the structure earn the ask?
+Audience — is the language right for this room?
+Safety — are there any unverified claims or
+reputational risks? Standards — consistent headlines,
+appropriate length, correct format throughout.
+
+The instruction must also include:
+- A detailed professional role and context section
+  drawn from my eight answers
+- Audience calibration rules based on Question 2
+- A slide type library appropriate to my presentation
+  types — with rules for each slide type
+- Language and style rules drawn from my tone
+  preference
+- Knowledge base reference rules — when and how to
+  draw on uploaded documents
+- Non-negotiables from Question 7
+- A clear step-by-step process the agent follows
+  every time it receives a presentation request:
+  Step 1 — Confirm aim and audience
+  Step 2 — Apply ARC to establish the structure
+  Step 3 — Propose slide structure and wait for
+    approval before writing content
+  Step 4 — Write slide content applying OEMGPC
+  Step 5 — Apply P-PASS quality filter
+  Step 6 — Deliver the output with a brief ARC
+    summary and any P-PASS flags for review
+
+Write in clear, professional language with headings
+and numbered sections throughout. The document should
+be complete and ready to paste directly into a
+Microsoft 365 declarative agent without modification.</div>
+    </div>
+
+    <div class="warn-box">
+      <p><strong>Before you copy:</strong> have your answers to the eight questions roughly in mind before you start. The more specific your answers — particularly Questions 2, 5, and 7 — the more useful the system instruction the AI generates.</p>
+    </div>
+  </section>
+
+  <!-- WHAT TO DO WITH IT -->
+  <section>
+    <div class="eyebrow">Next step</div>
+    <h2>Once you have your system instruction — go to Step 2.</h2>
+    <p class="lead">Copy the system instruction the AI generates and save it somewhere accessible — a Word document or notes app. You will paste it into your M365 agent in the build session.</p>
+    <div class="g2">
+      <div class="card c-burg">
+        <h3>Save it before the build session</h3>
+        <ul>
+          <li>Copy the full instruction — do not summarise it</li>
+          <li>Save to a Word document or notes app</li>
+          <li>Name it: <em>M365 Agent Instruction — [Your Organisation] — June 2026</em></li>
+          <li>Have it open and ready to paste during the build</li>
+        </ul>
+      </div>
+      <div class="card c-water">
+        <h3>What comes next</h3>
+        <ul>
+          <li>Step 2 covers the full demo video and written build guide — how to open M365, find the agent builder, paste your instruction, connect your files, and test the agent</li>
+          <li>Step 3 covers tips, prompt ideas by sector, quality checks, and how to scale your agent to your team</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hl">
+      <p><strong>Ready to build?</strong> Head to <a href="demo.html" style="color:var(--lime);font-weight:700;">Step 2 — Demo and Build Guide →</a></p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>UiLab Open House · June 2026 · Facilitated by Deborrah David · Data &amp; AI Advisor</p>
+  <a href="https://uilab.com.au" target="_blank">uilab.com.au</a>
+</footer>
+</body>
+</html>
