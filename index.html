@@ -3,163 +3,561 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Step 1 — Write Your System Instruction · UiLab Open House</title>
-<link rel="stylesheet" href="style.css">
+<title>UiLab Resource Hub — June 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background-color: #013053; color: #F0EDE8; font-family: 'PP Neue Montreal', 'Inter', 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; min-height: 100vh; }
+
+  /* HEADER */
+  header { background: linear-gradient(135deg, #4C0037 0%, #013053 60%); border-bottom: 2px solid #DD60FF; padding: 32px 40px 24px; }
+  .header-label { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #DD60FF; margin-bottom: 8px; }
+  header h1 { font-size: 28px; font-weight: 600; color: #F0EDE8; letter-spacing: -0.02em; margin-bottom: 4px; }
+  header p { font-size: 13px; color: #67DAFF; font-family: 'Roboto Mono', monospace; }
+
+  /* MAIN */
+  .content { max-width: 860px; margin: 0 auto; padding: 40px 40px 80px; }
+
+  /* INTRO */
+  .intro { margin-bottom: 40px; }
+  .intro p { font-size: 15px; color: #C8D8E4; margin-bottom: 12px; }
+
+  .quick-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 32px; }
+  .quick-link { background: rgba(255,255,255,0.04); border: 1px solid rgba(103,218,255,0.2); border-radius: 8px; padding: 14px 16px; text-decoration: none; transition: all 0.2s; display: block; }
+  .quick-link:hover { background: rgba(103,218,255,0.08); border-color: #67DAFF; }
+  .quick-link-label { font-family: 'Roboto Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #67DAFF; margin-bottom: 4px; }
+  .quick-link-title { font-size: 13px; font-weight: 600; color: #F0EDE8; }
+  .quick-link-url { font-family: 'Roboto Mono', monospace; font-size: 10px; color: #9BB8CC; margin-top: 2px; }
+
+  .callout { border-radius: 6px; padding: 14px 18px; margin-bottom: 20px; font-size: 13px; color: #C8D8E4; }
+  .callout-warning { background: rgba(255,99,37,0.1); border-left: 3px solid #FF6325; }
+  .callout-info { background: rgba(103,218,255,0.08); border-left: 3px solid #67DAFF; }
+  .callout-success { background: rgba(2,81,32,0.2); border-left: 3px solid #3ECFA0; }
+  .callout strong { color: #F0EDE8; }
+
+  /* ACCORDION */
+  .accordion { margin-bottom: 12px; border: 1px solid rgba(221,96,255,0.25); border-radius: 10px; overflow: hidden; }
+  .accordion-header { width: 100%; background: rgba(221,96,255,0.08); border: none; cursor: pointer; padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; text-align: left; transition: background 0.2s; }
+  .accordion-header:hover { background: rgba(221,96,255,0.15); }
+  .accordion-header.open { background: rgba(221,96,255,0.18); border-bottom: 1px solid rgba(221,96,255,0.25); }
+  .accordion-left { display: flex; align-items: center; gap: 14px; }
+  .phase-num { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #DD60FF; background: rgba(221,96,255,0.15); border: 1px solid rgba(221,96,255,0.3); border-radius: 4px; padding: 3px 10px; white-space: nowrap; }
+  .accordion-title { font-size: 16px; font-weight: 600; color: #F0EDE8; }
+  .accordion-subtitle { font-size: 12px; color: #9BB8CC; margin-top: 2px; font-family: 'Roboto Mono', monospace; }
+  .chevron { color: #DD60FF; font-size: 18px; transition: transform 0.25s; flex-shrink: 0; }
+  .accordion-header.open .chevron { transform: rotate(180deg); }
+  .accordion-body { display: none; padding: 28px 24px; background: rgba(0,0,0,0.15); }
+  .accordion-body.open { display: block; }
+
+  /* STEPS */
+  .step-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 20px; }
+  .step-item { display: flex; gap: 14px; align-items: flex-start; }
+  .step-dot { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: #DD60FF; color: #013053; font-family: 'Roboto Mono', monospace; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+  .step-body { flex: 1; }
+  .step-body strong { display: block; font-size: 14px; color: #F0EDE8; margin-bottom: 3px; }
+  .step-body p { font-size: 13px; color: #9BB8CC; margin: 0; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; padding: 0; margin-bottom: 16px; }
+  .checklist li { padding: 6px 0 6px 24px; position: relative; font-size: 13px; color: #C8D8E4; border-bottom: 1px solid rgba(103,218,255,0.06); }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: '☐'; position: absolute; left: 0; color: #67DAFF; font-family: 'Roboto Mono', monospace; font-size: 12px; }
+
+  /* PROMPTS */
+  .prompt-block { background: #010e1c; border: 1px solid rgba(103,218,255,0.2); border-radius: 6px; margin-bottom: 16px; overflow: hidden; }
+  .prompt-header { display: flex; justify-content: space-between; align-items: center; padding: 9px 14px; background: rgba(103,218,255,0.06); border-bottom: 1px solid rgba(103,218,255,0.15); }
+  .prompt-label { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #67DAFF; }
+  .copy-btn { background: rgba(221,96,255,0.15); border: 1px solid rgba(221,96,255,0.4); color: #DD60FF; font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 12px; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+  .copy-btn:hover { background: #DD60FF; color: #013053; }
+  .copy-btn.copied { background: #025120; border-color: #3ECFA0; color: #3ECFA0; }
+  .prompt-text { padding: 14px 16px; font-family: 'Roboto Mono', monospace; font-size: 11.5px; line-height: 1.75; color: #C8D8E4; white-space: pre-wrap; word-break: break-word; max-height: 340px; overflow-y: auto; }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: rgba(221,96,255,0.12); color: #DD60FF; font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 9px 12px; text-align: left; border-bottom: 1px solid rgba(221,96,255,0.25); }
+  td { padding: 9px 12px; border-bottom: 1px solid rgba(103,218,255,0.07); color: #C8D8E4; vertical-align: top; font-size: 13px; }
+  tr:last-child td { border-bottom: none; }
+
+  /* USE CASE GRID */
+  .usecase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .usecase-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(221,96,255,0.18); border-radius: 8px; padding: 16px; }
+  .usecase-tag { font-family: 'Roboto Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #DD60FF; margin-bottom: 6px; }
+  .usecase-card h4 { font-size: 13px; font-weight: 600; color: #F0EDE8; margin-bottom: 6px; }
+  .usecase-card p { font-size: 12px; color: #9BB8CC; margin: 0; }
+
+  /* PROMPT CARDS */
+  .prompt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .prompt-card { background: rgba(103,218,255,0.05); border: 1px solid rgba(103,218,255,0.15); border-radius: 6px; padding: 12px 14px; }
+  .prompt-card strong { display: block; font-size: 12px; color: #67DAFF; margin-bottom: 4px; }
+  .prompt-card p { font-size: 12px; color: #9BB8CC; margin: 0; }
+
+  /* TOPIC FLOW */
+  .topic-flow { background: #010e1c; border: 1px solid rgba(103,218,255,0.15); border-radius: 6px; padding: 18px; margin-bottom: 12px; }
+  .topic-title { font-family: 'Roboto Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #FFCD0E; margin-bottom: 12px; }
+  .topic-row { display: flex; gap: 10px; margin-bottom: 8px; align-items: flex-start; }
+  .topic-num { flex-shrink: 0; width: 20px; height: 20px; background: rgba(103,218,255,0.12); color: #67DAFF; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Roboto Mono', monospace; font-size: 9px; font-weight: 700; margin-top: 2px; }
+  .topic-text { font-size: 12px; color: #C8D8E4; line-height: 1.5; }
+  .topic-text em { color: #67DAFF; font-style: normal; }
+  .topic-text strong { color: #FFCD0E; }
+
+  h3 { font-family: 'Roboto Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #67DAFF; margin: 24px 0 10px; }
+  h3:first-child { margin-top: 0; }
+
+  .divider { border: none; border-top: 1px solid rgba(103,218,255,0.08); margin: 16px 0; }
+
+  /* BACK TO TOP */
+  .btt { position: fixed; bottom: 28px; right: 28px; background: #DD60FF; color: #013053; border: none; border-radius: 50%; width: 40px; height: 40px; font-size: 16px; font-weight: 700; cursor: pointer; display: none; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(221,96,255,0.4); transition: all 0.2s; z-index: 100; }
+  .btt:hover { background: #F0EDE8; transform: translateY(-2px); }
+  .btt.show { display: flex; }
+
+  @media (max-width: 640px) {
+    header { padding: 24px 20px; }
+    .content { padding: 24px 20px 60px; }
+    .accordion-body { padding: 20px 16px; }
+  }
+</style>
 </head>
 <body>
-<div class="copy-toast" id="toast">Copied to clipboard!</div>
 
-<nav class="nav">
-  <div class="nav-brand"><span class="ai">Ui</span><span class="dn">Lab Open House · June 2026</span></div>
-  <div class="nav-links">
-    <a href="index.html" class="active">1 · System Instruction</a>
-    <a href="demo.html">2 · Demo &amp; Build Guide</a>
-    <a href="tips.html">3 · Tips &amp; Scaling</a>
+<header>
+  <div class="header-label">UiLab · Future Tech Open House · June 2026</div>
+  <h1>Resource Hub</h1>
+  <p>Build a Copilot Assistant for Presentations</p>
+</header>
+
+<div class="content">
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>Everything you need to build your Microsoft 365 declarative agent tonight. Work through the phases in order — each one opens below when you need it.</p>
+
+    <h3>Watch first — what we are building tonight</h3>
+    <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:8px; margin-bottom:24px; border:1px solid rgba(103,218,255,0.2);">
+      <iframe style="position:absolute; top:0; left:0; width:100%; height:100%;" src="https://www.youtube.com/embed/j5gOOm-0thA?si=csIKQh8faldsgNIF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+
+        <h3>Open these tabs now</h3>
+    <div class="quick-links">
+      <a href="https://copilot.microsoft.com" target="_blank" class="quick-link">
+        <div class="quick-link-label">Build here</div>
+        <div class="quick-link-title">M365 Copilot</div>
+        <div class="quick-link-url">copilot.microsoft.com →</div>
+      </a>
+      <a href="https://chatgpt.com" target="_blank" class="quick-link">
+        <div class="quick-link-label">For metaprompt</div>
+        <div class="quick-link-title">ChatGPT</div>
+        <div class="quick-link-url">chatgpt.com →</div>
+      </a>
+
+    </div>
+
+    <div class="callout callout-warning">
+      <strong>Data safety:</strong> Do not paste client names, case details, TFNs, Medicare numbers, or classified information into any AI tool. Anonymise first, or use Microsoft 365 Copilot with your org credentials for content that needs to stay internal.
+    </div>
   </div>
-</nav>
-<div class="grad-bar"></div>
 
-<div class="hero">
-  <div class="hero-eyebrow">Step 1 of 3 · Before you open M365</div>
-  <h1>Generate your <span>system instruction.</span></h1>
-  <p>Paste this prompt into Claude, M365 Copilot, or ChatGPT. Answer the eight questions. The AI will write your complete system instruction — ready to paste into your M365 agent.</p>
+  <!-- PHASE 1 -->
+  <div class="accordion">
+    <button class="accordion-header open" onclick="toggle(this)">
+      <div class="accordion-left">
+        <span class="phase-num">Phase 1</span>
+        <div>
+          <div class="accordion-title">Create the System Instruction</div>
+          <div class="accordion-subtitle">Before you open Agent Builder — do this first</div>
+        </div>
+      </div>
+      <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body open">
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-dot">1</div>
+          <div class="step-body">
+            <strong>Run the metaprompt</strong>
+            <p>Paste the prompt below into Copilot or ChatGPT. Answer all 8 questions. The AI will produce an Agent Blueprint — a summary of your role, audience, presentation types, tone, and constraints.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-block">
+        <div class="prompt-header">
+          <span class="prompt-label">Metaprompt — paste into Copilot or ChatGPT</span>
+          <button class="copy-btn" onclick="copyText(this,'meta')">Copy</button>
+        </div>
+        <div class="prompt-text" id="meta">I am building a Microsoft 365 declarative agent that will help me create professional presentations. Before writing the system instruction, ask me the following questions one at a time. Wait for my answer before moving to the next question. Do not skip or combine questions.
+
+1. What is your professional role and what organisation or business do you work for?
+2. Who is the primary audience for the presentations this agent will help you create?
+3. What type of presentations will this agent help you create most often?
+4. What tone and communication style best represents your professional voice?
+5. What are the 2 to 3 key messages, values or priorities your presentations should always reflect?
+6. What documents, templates or knowledge sources will you connect to this agent? If none, say none.
+7. What should this agent never do?
+8. What format and structural constraints apply to your presentations?
+
+After all eight answers, summarise my responses as an Agent Blueprint with these headings:
+- Agent role and purpose
+- Primary audience
+- Presentation types
+- Tone and style
+- Core messages and values
+- Knowledge sources
+- Non-negotiables
+- Format and structural constraints
+
+Do not write the system instruction yet. Only create the Agent Blueprint.</div>
+      </div>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-dot">2</div>
+          <div class="step-body">
+            <strong>Review the blueprint</strong>
+            <p>Check it is specific to your role and not generic. Correct anything that is vague, inaccurate, or missing before moving on.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">3</div>
+          <div class="step-body">
+            <strong>Generate the system instruction</strong>
+            <p>Run the prompt below in the same conversation. It converts your blueprint into a paste-ready instruction for Agent Builder.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-block">
+        <div class="prompt-header">
+          <span class="prompt-label">System instruction generator — run after Step 2</span>
+          <button class="copy-btn" onclick="copyText(this,'sysinst')">Copy</button>
+        </div>
+        <div class="prompt-text" id="sysinst">Using the Agent Blueprint above, write a complete system instruction for a Microsoft 365 declarative agent that creates professional presentations.
+
+Requirements:
+- Keep the instruction under 8,000 characters.
+- Write in clear, direct professional language.
+- Make the instruction specific to the role, organisation, audience, presentation types and communication style in the blueprint.
+- Do not create fixed slide numbers unless the blueprint specifically requires them.
+- Use dynamic structure so the agent can adapt to each request.
+
+The system instruction must include these sections:
+1. Role and purpose
+2. Knowledge source use
+3. Audience
+4. Communication style
+5. Core messages and priorities
+6. Presentation method
+7. Output and formatting rules
+8. Non-negotiables
+9. Quality check
+
+Presentation method:
+- Lead with the answer.
+- Use assertion-based slide titles that state the conclusion, not topic labels.
+- Structure slide content as Insight → Evidence → Implication → Action.
+
+Return only the final system instruction, ready to paste into Microsoft 365 Agent Builder.</div>
+      </div>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-dot">4</div>
+          <div class="step-body">
+            <strong>Check the instruction before moving on</strong>
+            <p>Confirm it is under 8,000 characters, defines the agent clearly, lists non-negotiables, and does not contain long content that belongs in a knowledge source.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggle(this)">
+      <div class="accordion-left">
+        <span class="phase-num">Phase 2</span>
+        <div>
+          <div class="accordion-title">Prepare Knowledge Sources</div>
+          <div class="accordion-subtitle">Files and documents the agent can reference</div>
+        </div>
+      </div>
+      <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+
+      <div class="callout callout-info">
+        <strong>System instruction vs knowledge sources:</strong> The instruction defines how the agent behaves. Knowledge sources provide the information it draws from. Keep these separate.
+      </div>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-dot">5</div>
+          <div class="step-body">
+            <strong>Choose your sources</strong>
+            <p>Use current, approved documents you understand well enough to check for accuracy. Use clear filenames. Remove outdated or conflicting files.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">6</div>
+          <div class="step-body">
+            <strong>Prepare files for upload</strong>
+            <p>Keep each file focused. Remove working notes. Check files open correctly. Have them ready before opening Agent Builder.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Examples by agent type</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Agent type</th><th>Useful knowledge sources</th></tr></thead>
+          <tbody>
+            <tr><td>Presentation agent</td><td>Brand guide, PowerPoint template, example decks</td></tr>
+            <tr><td>Finance agent</td><td>Financial reports, reporting checklist, chart of accounts</td></tr>
+            <tr><td>HR agent</td><td>HR policies, onboarding guides, role descriptions</td></tr>
+            <tr><td>Training agent</td><td>Curriculum documents, assessment criteria, lesson templates</td></tr>
+            <tr><td>Sales agent</td><td>Product catalogue, pricing guide, case studies</td></tr>
+            <tr><td>Project agent</td><td>Project plans, risk register, status report templates</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggle(this)">
+      <div class="accordion-left">
+        <span class="phase-num">Phase 3</span>
+        <div>
+          <div class="accordion-title">Build the Agent</div>
+          <div class="accordion-subtitle">Open Agent Builder — system instruction ready</div>
+        </div>
+      </div>
+      <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-dot">7</div>
+          <div class="step-body">
+            <strong>Open Microsoft 365 Copilot</strong>
+            <p>Go to copilot.microsoft.com → left nav → <strong>New agent</strong>.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">8</div>
+          <div class="step-body">
+            <strong>Select Skip to configure</strong>
+            <p>Choose Configure — you already have your system instruction ready.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">9</div>
+          <div class="step-body">
+            <strong>Name and describe your agent</strong>
+            <p>Use a purpose-specific name such as <em>Client Presentation Agent</em>. Avoid vague names like Helper or Assistant.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">10</div>
+          <div class="step-body">
+            <strong>Paste the system instruction</strong>
+            <p>Paste into the <strong>Instructions</strong> box. Do not paste the metaprompt or blueprint — only the final system instruction.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">11</div>
+          <div class="step-body">
+            <strong>Add knowledge sources</strong>
+            <p>In <strong>Knowledge</strong>, upload your prepared files. Turn on <em>Only use specified sources</em> if you want the agent to stay within those sources only.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">12</div>
+          <div class="step-body">
+            <strong>Configure capabilities</strong>
+            <p>Enable document, chart, and PowerPoint creation. Image creation is optional.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">13</div>
+          <div class="step-body">
+            <strong>Add suggested prompts</strong>
+            <p>These are starter buttons users click when they open the agent. Copy the examples below or write your own.</p>
+          </div>
+        </div>
+      </div>
+
+      <h3>Suggested prompt examples</h3>
+      <div class="prompt-grid">
+        <div class="prompt-card"><strong>Create a presentation</strong><p>Create a professional presentation using the attached knowledge sources. Lead with the main message.</p></div>
+        <div class="prompt-card"><strong>Summarise into slides</strong><p>Turn the selected document into a concise presentation. Use assertion headlines and plain English.</p></div>
+        <div class="prompt-card"><strong>Prepare briefing deck</strong><p>Create a briefing deck covering the key issue, evidence, implications and next steps.</p></div>
+        <div class="prompt-card"><strong>Review my deck</strong><p>Review this presentation against the agent instructions and identify what to improve before presenting.</p></div>
+        <div class="prompt-card"><strong>Create speaker notes</strong><p>Create concise speaker notes using the required tone and audience level.</p></div>
+        <div class="prompt-card"><strong>Build executive summary</strong><p>Create an executive summary slide and action slide from the available information.</p></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggle(this)">
+      <div class="accordion-left">
+        <span class="phase-num">Phase 4</span>
+        <div>
+          <div class="accordion-title">Test and Improve</div>
+          <div class="accordion-subtitle">Quality check before publishing</div>
+        </div>
+      </div>
+      <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-dot">15</div>
+          <div class="step-body">
+            <strong>Preview the agent</strong>
+            <p>Select <strong>Preview</strong> and run at least three prompts — a normal request, a complex one, and a review request.</p>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-dot">16</div>
+          <div class="step-body">
+            <strong>Quality check the output</strong>
+            <p>Use the checklist below to decide whether the agent is ready to publish.</p>
+          </div>
+        </div>
+      </div>
+
+      <ul class="checklist">
+        <li>Output follows the system instruction.</li>
+        <li>Knowledge sources are used where relevant.</li>
+        <li>Tone matches the intended professional voice.</li>
+        <li>Slide titles lead with conclusions, not topic labels.</li>
+        <li>Content is understandable for the intended audience.</li>
+        <li>Agent does not invent unsupported facts.</li>
+        <li>Output is useful enough that a real user could edit and use it.</li>
+      </ul>
+
+      <h3>If the output needs work</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Problem</th><th>Fix</th></tr></thead>
+          <tbody>
+            <tr><td>Too generic</td><td>Make role, audience, tone, and non-negotiables more specific in the system instruction.</td></tr>
+            <tr><td>Misses details</td><td>Improve knowledge sources — clearer filenames, more focused documents.</td></tr>
+            <tr><td>Wrong structure</td><td>Strengthen output and formatting rules in the system instruction.</td></tr>
+            <tr><td>Uses jargon</td><td>Add stronger plain-English and audience rules.</td></tr>
+            <tr><td>Makes unsupported claims</td><td>Add stronger source-use rules and quality check steps.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="step-list">
+        <div class="step-item">
+          <div class="step-dot">17</div>
+          <div class="step-body">
+            <strong>Publish</strong>
+            <p>Select <strong>Create</strong> for a new agent or <strong>Update</strong> for an existing one. Run one final prompt after publishing to confirm it works as expected.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- USE CASES -->
+  <div class="accordion">
+    <button class="accordion-header" onclick="toggle(this)">
+      <div class="accordion-left">
+        <span class="phase-num">Use Cases</span>
+        <div>
+          <div class="accordion-title">What Can a Declarative Agent Do?</div>
+          <div class="accordion-subtitle">Examples across sectors</div>
+        </div>
+      </div>
+      <span class="chevron">▾</span>
+    </button>
+    <div class="accordion-body">
+
+      <div class="usecase-grid">
+        <div class="usecase-card">
+          <div class="usecase-tag">Local Government</div>
+          <h4>Council Briefing Agent</h4>
+          <p>Generates structured briefings from project data using plain language and assertion headlines.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-tag">Healthcare</div>
+          <h4>Clinical Update Agent</h4>
+          <p>Turns audit data and policy updates into structured team briefings — privacy-aware by design.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-tag">Education</div>
+          <h4>ASQA Audit Prep Agent</h4>
+          <p>Structures audit evidence into compliant briefings aligned to ASQA's Standards for RTOs.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-tag">Corporate / B2B</div>
+          <h4>Sales Proposal Agent</h4>
+          <p>Pulls from your CRM and product catalogue to generate ROI-focused proposals.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-tag">Trades</div>
+          <h4>Tender Response Agent</h4>
+          <p>Structures tender responses from project specs, WHS data, and timelines — consistent format every time.</p>
+        </div>
+        <div class="usecase-card">
+          <div class="usecase-tag">Non-Profit</div>
+          <h4>Funding Proposal Agent</h4>
+          <p>Converts impact data into funder-ready grant applications aligned to your organisation's voice.</p>
+        </div>
+      </div>
+
+      <div class="callout callout-success">
+        <strong>Human-in-the-Lead:</strong> Every agent built at UiLab includes a human review step before consequential outputs are sent or acted on. The agent does the groundwork. The person makes the final call.
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
-<main class="main">
-
-  <div class="section-eyebrow">The prompt</div>
-  <h2>Copy this and paste it into your AI tool.</h2>
-
-  <div class="prompt-box">
-    <div class="prompt-box-label">
-      <span>System Instruction Generator — copy and paste into your AI tool</span>
-      <button class="copy-btn" onclick="copyPrompt('prompt1', this)">Copy</button>
-    </div>
-    <pre id="prompt1">I am building a Microsoft 365 declarative agent that will help me create professional presentations.
-
-Before you write the system instruction, I need you to understand my professional context. Please ask me the following questions one at a time, wait for my answer, and confirm my response before moving to the next question. Do not skip any question or combine them.
-
-QUESTION 1
-What is your professional role, and what organisation or business do you work for? Include your industry or sector, the size of your organisation, and where you are based if relevant.
-
-QUESTION 2
-Who is the primary audience for the presentations this agent will help you create? Describe who is in the room — their professional background, their level of familiarity with your subject matter, and what they need to walk away knowing or deciding.
-
-QUESTION 3
-What type of presentations will this agent help you create most often? For example: client reports, board updates, funding proposals, team briefings, community presentations, training materials, or something else. Be as specific as possible.
-
-QUESTION 4
-What tone and communication style best represents your professional voice? Choose from: highly formal and technical, professionally formal, professional and accessible, warm and conversational — or describe your own.
-
-QUESTION 5
-What are the 2 to 3 key messages, values, or priorities that your presentations should always reflect — regardless of the topic? These might be your organisation's mission, your professional standards, or the outcomes you always want your audience to leave with.
-
-QUESTION 6
-What documents, templates, or knowledge sources will you connect to this agent? List any files you plan to upload — for example financial reports, policy documents, curriculum standards, product catalogues, or brand guidelines. If none, say none.
-
-QUESTION 7
-What should this agent never do? Include any language, structure, content, or behaviour that would be unprofessional, inaccurate, or inappropriate for your context.
-
-QUESTION 8
-What format and structural constraints apply to your presentations? Include slide count limits, required sections, branding requirements, or any other fixed parameters your presentations must meet.
-
----
-
-Once you have all eight answers, write a complete, detailed system instruction for my Microsoft 365 declarative agent.
-
-The instruction must be between 4,000 and 8,000 words — specific enough that this agent could not be mistaken for one built for a different professional in a different organisation.
-
-Incorporate the following three presentation frameworks as governing principles the agent applies to every presentation it helps create:
-
-FRAMEWORK 1 — ARC (Aim, Route, Checkpoints)
-The agent must always establish the Aim — the exact outcome the audience must reach — before generating any content. It must then map the Route — the narrative path from opening to close. Finally it must define 3 to 5 Checkpoints — success criteria confirming the presentation has achieved its aim. These must be confirmed with the user before any slide content is written.
-
-FRAMEWORK 2 — OEMGPC (Orient, Explain, Model, Guide, Pre-empt, Commit)
-Every slide must earn its place. The agent applies this sequence across the deck: Orient the audience by framing the context and problem. Explain the core argument. Model it with evidence, data, or a worked example. Guide the audience by naming what this means for them specifically. Pre-empt the objection they are most likely thinking. Commit with a clear ask and next step. The agent checks every slide against this sequence before finalising.
-
-FRAMEWORK 3 — P-PASS (Purpose, Persuasion, Audience, Safety, Standards)
-Before finalising any presentation output, the agent applies the P-PASS quality filter: Does every slide serve the stated Purpose? Does the structure earn the Persuasion — does it justify the ask? Is the language right for this Audience? Are there Safety risks — unverified claims, reputational exposure, or content that could mislead? Do all slides meet the Standards — consistent headlines, appropriate length, correct format?
-
-The system instruction must also include:
-- A detailed description of the agent's professional role and context drawn from my eight answers
-- Specific audience calibration rules based on my answer to Question 2
-- A slide type library appropriate to my presentation types — with rules for each slide type
-- Language and style rules drawn from my tone preference and professional standards
-- Knowledge base reference rules — when and how to draw on connected documents
-- Non-negotiables drawn from my answer to Question 7
-- A clear six-step process the agent follows every time it receives a presentation request:
-  Step 1 — Confirm the aim and audience
-  Step 2 — Apply ARC to establish the structure
-  Step 3 — Propose the slide structure and wait for approval before writing any content
-  Step 4 — Write slide content applying OEMGPC to each slide
-  Step 5 — Apply P-PASS quality filter before delivering the output
-  Step 6 — Deliver the presentation with a brief summary of the ARC applied, OEMGPC logic, and any P-PASS flags for the user to review
-
-Write the instruction in clear, direct professional language. Use headings and numbered sections throughout. The final document must be ready to paste directly into a Microsoft 365 declarative agent without modification.</pre>
-  </div>
-
-  <div class="divider"></div>
-
-  <div class="section-eyebrow">What to do next</div>
-  <h2>Once the AI has generated your instruction — do this.</h2>
-
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-content">
-        <h3>Read it before you paste it</h3>
-        <p>Scroll through the generated instruction. Check that your professional context, audience, and non-negotiables are accurately reflected. If anything is wrong, correct it in the AI conversation before copying.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-content">
-        <h3>Run the quality check</h3>
-        <p>Paste the instruction back into the AI and ask: <em>"What is unclear or ambiguous in these instructions? What would you have to guess about rather than know for certain?"</em> Fix what comes up.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-content">
-        <h3>Save a copy</h3>
-        <p>Copy the full instruction into a Word document or notes app. Name it: <em>M365 Agent System Instruction — [Your Organisation] — June 2026.</em> Always keep a saved version before making changes.</p>
-      </div>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-content">
-        <h3>Go to Page 2 — the demo and build guide</h3>
-        <p>Your instruction is ready. Head to Page 2 to watch the demo and follow the step-by-step build guide to configure your M365 agent.</p>
-      </div>
-    </div>
-  </div>
-
-  <div style="margin-top:32px;display:flex;justify-content:flex-end;">
-    <a href="demo.html" style="background:var(--burg);color:var(--white);text-decoration:none;font-family:'Syne',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;padding:12px 28px;border-radius:8px;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.85" onmouseout="this.style.opacity=1">Next: Demo &amp; Build Guide →</a>
-  </div>
-
-</main>
-
-<footer>
-  <p>UiLab Open House · June 2026 · Logan City Council</p>
-  <nav class="footer-nav">
-    <a href="index.html">System Instruction</a>
-    <a href="demo.html">Demo &amp; Build Guide</a>
-    <a href="tips.html">Tips &amp; Scaling</a>
-  </nav>
-</footer>
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <script>
-function copyPrompt(id, btn) {
-  const text = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(text).then(() => {
-    btn.textContent = 'Copied!';
-    btn.classList.add('copied');
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); toast.classList.remove('show'); }, 2500);
+  function toggle(btn) {
+    const body = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.accordion-header').forEach(h => {
+      h.classList.remove('open');
+      h.nextElementSibling.classList.remove('open');
+    });
+    // Open this one if it was closed
+    if (!isOpen) {
+      btn.classList.add('open');
+      body.classList.add('open');
+    }
+  }
+
+  function copyText(btn, id) {
+    navigator.clipboard.writeText(document.getElementById(id).innerText).then(() => {
+      btn.textContent = 'Copied!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+
+  window.addEventListener('scroll', () => {
+    document.getElementById('btt').classList.toggle('show', window.scrollY > 300);
   });
-}
 </script>
 </body>
 </html>
